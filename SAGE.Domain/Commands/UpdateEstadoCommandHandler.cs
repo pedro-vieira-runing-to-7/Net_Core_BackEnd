@@ -1,4 +1,4 @@
-﻿using SAGE.Commom.Notification;
+using SAGE.Commom.Notification;
 using SAGE.Commom.Publisher;
 using SAGE.Domain.DTO;
 using SAGE.Domain.Entities;
@@ -12,20 +12,21 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace SAGE.Domain.Commands
 {
-    public class UpdateEstadoCommandHandler
+    public class UpdatePessoaCommandHandler
     {
-        private readonly IEstadoRepository _EstadoRepository;        
+        private readonly IPessoaRepository _PessoaRepository;        
         private readonly DomainNotificationHandler _domainNotificationHandler;
-        public UpdateEstadoCommandHandler(IEstadoRepository EstadoRepository,  DomainNotificationHandler domainNotificationHandler)
+        public UpdatePessoaCommandHandler(IPessoaRepository PessoaRepository,  DomainNotificationHandler domainNotificationHandler)
         {
-            _EstadoRepository = EstadoRepository;            
+            _PessoaRepository = PessoaRepository;            
             _domainNotificationHandler = domainNotificationHandler;
         }
 
-        public Task<Unit> Handle(NewEstadoCommand command)
+        public Task<Unit> Handle(UpdatePessoaCommand command)
         {
             if (!command.IsValid())
             {
@@ -33,11 +34,28 @@ namespace SAGE.Domain.Commands
                 return Unit.Task;
             }
 
-            Estado Estado = new Estado(command.Estado.Id,
-                                       command.Estado.Sigla,
-                                       command.Estado.Nome);
+            Pessoa pessoa = new Pessoa(command.Pessoa.Id,
+                                       command.Pessoa.IdStatus,
+                                       command.Pessoa.IdTipoPessoa,
+                                       command.Pessoa.Nome,
+                                       command.Pessoa.NomeSocial,
+                                       command.Pessoa.CpfCnpj,
+                                       command.Pessoa.RgIe,
+                                       command.Pessoa.DataNascimentoAbertura,
+                                       command.Pessoa.Sexo,
+                                       command.Pessoa.Email,
+                                       command.Pessoa.NumeroTelefoneFixo,
+                                       command.Pessoa.NumeroCelular);
 
-            _EstadoRepository.Update(Estado);
+            var configPessoa = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<EnderecoDTO, Endereco>();
+            });
+
+            IMapper mapper = configPessoa.CreateMapper();
+            pessoa.Endereco = mapper.Map<ICollection<EnderecoDTO>, ICollection<Endereco>>(command.Pessoa.Endereco);
+
+            _PessoaRepository.Update(pessoa);
 
             return Unit.Task;
         }
