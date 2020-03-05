@@ -1,4 +1,4 @@
-﻿using SAGE.Commom.Notification;
+using SAGE.Commom.Notification;
 using SAGE.Commom.Pagging;
 using SAGE.Commom.Publisher;
 using SAGE.Domain.Commands;
@@ -46,9 +46,9 @@ namespace SAGE.Service.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(EnderecoDTO endereco)
         {
-            var newEnderecoCommand = new NewEnderecoCommand(endereco);
-            _updatehandler.Handle(newEnderecoCommand);
-            return Response(newEnderecoCommand);
+            var updateEnderecoCommand = new UpdateEnderecoCommand(endereco);
+            _updatehandler.Handle(updateEnderecoCommand);
+            return Response(updateEnderecoCommand);
         }
 
         [HttpGet()]
