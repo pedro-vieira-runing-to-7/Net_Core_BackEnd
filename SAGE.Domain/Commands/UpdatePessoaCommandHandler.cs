@@ -1,4 +1,4 @@
-﻿using SAGE.Commom.Notification;
+using SAGE.Commom.Notification;
 using SAGE.Commom.Publisher;
 using SAGE.Domain.DTO;
 using SAGE.Domain.Entities;
@@ -26,7 +26,7 @@ namespace SAGE.Domain.Commands
             _domainNotificationHandler = domainNotificationHandler;
         }
 
-        public Task<Unit> Handle(NewPessoaCommand command)
+        public Task<Unit> Handle(UpdatePessoaCommand command)
         {
             if (!command.IsValid())
             {
