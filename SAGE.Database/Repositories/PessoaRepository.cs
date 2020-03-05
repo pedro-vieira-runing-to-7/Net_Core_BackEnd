@@ -40,8 +40,8 @@ namespace SAGE.Database.Repositories
 
         public Pessoa Get(Guid id)
         {
-            var pessoa =  _context.Pessoas
-                         .Include(e => e.Endereco )
+            var pessoa = _context.Pessoas
+                         .Include(e => e.Endereco)
                          .Where(w => w.Id == id).FirstOrDefault();
 
             if (pessoa != null && pessoa.Endereco != null)
@@ -65,7 +65,7 @@ namespace SAGE.Database.Repositories
 
         public void Update(Pessoa pessoa)
         {
-            _context.Pessoas.Update(pessoa);            
+            _context.Pessoas.Update(pessoa);
         }
     }
 }

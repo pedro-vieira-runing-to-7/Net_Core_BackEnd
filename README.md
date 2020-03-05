@@ -1,8 +1,6 @@
 # SAGE CRUD API
-
-=====================
   
-  ## API .NET Core
+## API .NET Core
  
   Cadastro, edição, exclusão e atualização de um cadastro de pessoa com endereço.
 

@@ -25,7 +25,7 @@ namespace SAGE.Domain.Commands
             _domainNotificationHandler = domainNotificationHandler;
         }
 
-        public Task<Unit> Handle(NewEnderecoCommand command)
+        public Task<Unit> Handle(UpdateEnderecoCommand command)
         {
             if (!command.IsValid())
             {

@@ -25,7 +25,7 @@ namespace SAGE.Domain.Commands
             _domainNotificationHandler = domainNotificationHandler;
         }
 
-        public Task<Unit> Handle(NewEstadoCommand command)
+        public Task<Unit> Handle(UpdateEstadoCommand command)
         {
             if (!command.IsValid())
             {
