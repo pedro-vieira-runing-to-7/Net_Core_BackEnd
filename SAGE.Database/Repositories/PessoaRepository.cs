@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace SAGE.Database.Repositories
 {
@@ -30,7 +31,21 @@ namespace SAGE.Database.Repositories
 
         public Pessoa Get(Guid id)
         {
-            return _context.Pessoas.Where(w => w.Id == id).FirstOrDefault();
+            var pessoa =  _context.Pessoas
+                         .Include(e => e.Endereco )
+                         .Where(w => w.Id == id).FirstOrDefault();
+
+            if (pessoa != null)
+            {
+                foreach (var item in pessoa.Endereco)
+                {
+                    item.IdPessoaNavigation = null;
+                    item.IdEstadoNavigation = _context.Estados.Where(w => w.Id == item.IdEstado).FirstOrDefault();
+                    item.IdEstadoNavigation.Endereco = null;
+                }
+            }
+
+            return pessoa;
         }
 
         public PagedResult<Pessoa> Get(int actualPage, int pageSize)
