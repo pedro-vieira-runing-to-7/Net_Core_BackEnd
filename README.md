@@ -4,12 +4,59 @@
   
   ## API .NET Core
  
-  Cadastro, ediÁ„o, exclus„o e atualizaÁ„o de um cadastro de Pessoa com EndereÁo.
+  Cadastro, edi√ß√£o, exclus√£o e atualiza√ß√£o de um cadastro de pessoa com endere√ßo.
 
 
-  ## informaÁıes importantes :
+# Como rodar a aplica√ß√£o:
+- Possuir a ultima vers√£o do  SDK (https://dot.net/core)
+
+ ## Docker
+  Apartir do diret√≥rio clonado da aplica√ß√£o:
+  - docker build -t sageback .
+  - docker run -d -p 8080:80 --name sageback
+
+ ## .NET CLI
+  Apartir do diret√≥rio clonado da aplica√ß√£o:
+  dotnet run --project sage.api\sage.Service.csProj
+
+  Acessar o Swagger para visualizar o endpoint e testar as chamadas
+  https://localhost:5001/swagger/index.html
   
-  - A aplicaÁ„o esta utilizando EF Core in memory ( Apenas para testes), portanto os dados sÛ ser„o mantidos durante o ciclo de vida da aplicaÁ„o.
+  ## informa√ß√µes importantes :
+  
+   - A aplica√ß√£o esta utilizando EF Core in memory ( Apenas para testes), portanto os dados s√≥ ser√£o mantidos durante o ciclo de vida da aplica√ß√£o.
+   
+   - TODO: A Api esta retornando classes do dominio ao inv√©s de serem mapeadas para ViewModels (Automapper) 
 
+## Ferramentas de CI
+- Travis
+- Circle CI
+
+## Tecnologias Utilizadas:
+
+- ASP.NET Core 2.2 (with .NET Core)
+- ASP.NET MVC Core 
+- ASP.NET WebApi Core
+- Entity Framework Core 2.2
+- Entity Framework Core 2.2 (InMemory)
+- .NET Core Native DI
+- Automapper
+- FluentValidator
+- MediatR
+- Swagger UI
+
+## Architecture / Patterns:
+
+- Arquitetura com segrega√ß√£o de respons√°bilidade, utilizando Principios do SOLID
+- Dependency Injection
+- Inversion of control
+- Domain Driven Design (Camadas and Domain Model Pattern)
+- Domain Events
+- Domain Notification
+- CQRS ( utilizando um unico banco de dados)
+- Unit of Work
+- Repository
+- Factory
+- TDD
 
 

@@ -26,7 +26,7 @@ namespace SAGE.Domain.Commands
             _domainNotificationHandler = domainNotificationHandler;
         }
 
-        public Task<Unit> Handle(NewPessoaCommand command)
+        public Task<Unit> Handle(UpdatePessoaCommand command)
         {
             if (!command.IsValid())
             {

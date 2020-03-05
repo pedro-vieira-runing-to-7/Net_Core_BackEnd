@@ -46,9 +46,9 @@ namespace SAGE.Service.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(PessoaDTO pessoa)
         {
-            var newPessoaCommand = new NewPessoaCommand(pessoa);
-            _updatehandler.Handle(newPessoaCommand);
-            return Response(newPessoaCommand);
+            var updatePessoaCommand = new UpdatePessoaCommand(pessoa);
+            _updatehandler.Handle(updatePessoaCommand);
+            return Response(updatePessoaCommand);
         }
 
         [HttpGet()]
