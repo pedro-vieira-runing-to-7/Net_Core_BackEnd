@@ -1,4 +1,4 @@
-﻿using SAGE.Commom.Pagging;
+using SAGE.Commom.Pagging;
 using SAGE.Database.Context;
 using SAGE.Domain.Entities;
 using SAGE.Domain.Interfaces;
@@ -26,16 +26,25 @@ namespace SAGE.Database.Repositories
         public void Delete(Guid id)
         {
             var pessoa = _context.Pessoas.Where(w => w.Id == id).FirstOrDefault();
+
+            if (pessoa != null && pessoa.Endereco != null)
+            {
+                foreach (var item in pessoa.Endereco)
+                {
+                    _context.Enderecos.Remove(item);
+                }
+            }
+
             _context.Pessoas.Remove(pessoa);
         }
 
         public Pessoa Get(Guid id)
         {
             var pessoa =  _context.Pessoas
-                         .Include(e => e.Endereco )
+                         .Include(e => e.Endereco)
                          .Where(w => w.Id == id).FirstOrDefault();
 
-            if (pessoa != null)
+            if (pessoa != null && pessoa.Endereco != null)
             {
                 foreach (var item in pessoa.Endereco)
                 {
