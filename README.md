@@ -53,7 +53,3 @@
 - CQRS ( utilizando um unico banco de dados)
 - Unit of Work
 - Repository
-- Factory
-- TDD
-
-
