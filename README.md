@@ -1,4 +1,4 @@
-# SAGE CRUD API
+# FSOLID CRUD API
   
 ## API .NET Core
  
@@ -9,12 +9,12 @@
 
  ## Docker
   Apartir do diretório clonado da aplicação:
-  - docker build -t sageback .
-  - docker run -d -p 8080:80 --name sageback
+  - docker build -t fsolidback .
+  - docker run -d -p 8080:80 --name fsolidback
 
  ## .NET CLI
   Apartir do diretório clonado da aplicação:
-  dotnet run --project sage.api\sage.Service.csProj
+  dotnet run --project fsolid.api\fsolid.Service.csProj
 
   Acessar o Swagger para visualizar o endpoint e testar as chamadas
   https://localhost:5001/swagger/index.html
@@ -54,6 +54,7 @@
 - Unit of Work
 - Repository
 - Factory
+- DDD
 - TDD
 
 
