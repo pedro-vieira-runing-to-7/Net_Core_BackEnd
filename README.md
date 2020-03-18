@@ -2,7 +2,7 @@
   
 ## API .NET Core
  
-  Cadastro, edição, exclusão e atualização de um cadastro de pessoa com endereço.
+ Cadastro, edição, exclusão e atualização de um cadastro de pessoa com endereço.
 
 # Como rodar a aplicação:
 - Possuir a ultima versão do  SDK (https://dot.net/core)
