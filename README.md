@@ -56,5 +56,3 @@
 - Factory
 - DDD
 - TDD
-
-
