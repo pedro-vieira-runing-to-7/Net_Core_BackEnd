@@ -1,4 +1,5 @@
-﻿using FSOLID.Service.Configuration;
+﻿using System.IO;
+using FSOLID.Service.Configuration;
 using FSOLID.Service.Middleware;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace FSOLID.API
@@ -39,21 +41,23 @@ namespace FSOLID.API
                     Title = "FSOLID API",
                     Description = "FSOLID API V1"
                 });
-                //s.IncludeXmlComments("FSOLIDAPI.Service.xml");
+
+
+               // s.IncludeXmlComments(MountPatchXmlSwagger());
             });
         }
 
-        //private string MountPatchXmlSwagger()
-        //{
-        //    string appPath =
-        //           PlatformServices.Default.Application.ApplicationBasePath;
-        //    string appName =
-        //        PlatformServices.Default.Application.ApplicationName;
-        //    string caminhoXmlDoc =
-        //        Path.Combine(appPath, $"{appName}.xml");
+        private string MountPatchXmlSwagger()
+        {
+            string appPath =
+                   PlatformServices.Default.Application.ApplicationBasePath;
+            string appName =
+                PlatformServices.Default.Application.ApplicationName;
+            string caminhoXmlDoc =
+                Path.Combine(appPath, $"{appName}.xml");
 
-        //    return caminhoXmlDoc;
-        //}
+            return caminhoXmlDoc;
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
