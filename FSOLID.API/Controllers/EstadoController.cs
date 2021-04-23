@@ -52,13 +52,13 @@ namespace FSOLID.Service.Controllers
         }
 
         [HttpGet()]
-        public ActionResult<PagedResult<Estado>> Get(int actualPage = 1, int pageSize = 20)
+        public ActionResult<PagedResult<EstadoDTO>> Get(int actualPage = 1, int pageSize = 20)
         {
             return Ok(_EstadoRepository.Get(actualPage, pageSize));
         }
 
         [HttpGet("{id}")]
-        public ActionResult<PagedResult<Estado>> Get(Guid id)
+        public ActionResult<PagedResult<EstadoDTO>> Get(Guid id)
         {
             return Ok(_EstadoRepository.Get(id));
         }

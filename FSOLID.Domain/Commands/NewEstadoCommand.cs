@@ -26,5 +26,6 @@ namespace FSOLID.Domain.Commands
         {
             return new NewEstadoCommandValidation().Validate(this);
         }
+
     }
 }

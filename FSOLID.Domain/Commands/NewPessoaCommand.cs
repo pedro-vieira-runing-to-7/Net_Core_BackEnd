@@ -26,5 +26,6 @@ namespace FSOLID.Domain.Commands
         {
             return new NewPessoaCommandValidation().Validate(this);
         }
+
     }
 }

@@ -26,5 +26,6 @@ namespace FSOLID.Domain.Commands
         {
             return new NewEnderecoCommandValidation().Validate(this);
         }
+
     }
 }

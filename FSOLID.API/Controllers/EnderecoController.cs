@@ -52,13 +52,13 @@ namespace FSOLID.Service.Controllers
         }
 
         [HttpGet()]
-        public ActionResult<PagedResult<Endereco>> Get(int actualPage = 1, int pageSize = 20)
+        public ActionResult<PagedResult<EnderecoDTO>> Get(int actualPage = 1, int pageSize = 20)
         {
             return Ok(_EnderecoRepository.Get(actualPage, pageSize));
         }
 
         [HttpGet("{id}")]
-        public ActionResult<PagedResult<Endereco>> Get(Guid id)
+        public ActionResult<PagedResult<EnderecoDTO>> Get(Guid id)
         {
             return Ok(_EnderecoRepository.Get(id));
         }
