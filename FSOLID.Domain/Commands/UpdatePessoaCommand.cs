@@ -1,9 +1,7 @@
-﻿using FSOLID.Commom.Publisher;
+﻿using FluentValidation.Results;
+using FSOLID.Commom.Publisher;
 using FSOLID.Domain.DTO;
 using FSOLID.Domain.Validations;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FSOLID.Domain.Commands
 {
@@ -19,6 +17,11 @@ namespace FSOLID.Domain.Commands
         public override bool IsValid()
         {
             return new UpdatePessoaCommandValidation().Validate(this).IsValid;
+        }
+
+        public new ValidationResult ValidationResult()
+        {
+            return new UpdatePessoaCommandValidation().Validate(this);
         }
     }
 }

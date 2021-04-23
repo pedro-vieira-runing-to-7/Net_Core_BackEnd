@@ -1,18 +1,12 @@
+using AutoMapper;
 using FSOLID.Commom.Notification;
-using FSOLID.Commom.Publisher;
 using FSOLID.Domain.DTO;
 using FSOLID.Domain.Entities;
-using FSOLID.Domain.Events;
 using FSOLID.Domain.Interfaces;
-using FSOLID.Domain.Validations;
 using MediatR;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 
 namespace FSOLID.Domain.Commands
 {
@@ -30,7 +24,7 @@ namespace FSOLID.Domain.Commands
         {
             if (!command.IsValid())
             {
-                command.ValidationResult.Errors.ToList().ForEach(error => _domainNotificationHandler.Handle(new DomainNotification(command.GetType().ToString(), error.ErrorMessage)));
+                command.ValidationResult().Errors.ToList().ForEach(error => _domainNotificationHandler.Handle(new DomainNotification(command.GetType().ToString(), error.ErrorMessage)));
                 return Unit.Task;
             }
 

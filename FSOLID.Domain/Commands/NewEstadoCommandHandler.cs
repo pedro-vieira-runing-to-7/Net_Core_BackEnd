@@ -29,7 +29,7 @@ namespace FSOLID.Domain.Commands
         {
             if (!command.IsValid())
             {
-                command.ValidationResult.Errors.ToList().ForEach(error => _domainNotificationHandler.Handle(new DomainNotification(command.GetType().ToString(), error.ErrorMessage)));
+                command.ValidationResult().Errors.ToList().ForEach(error => _domainNotificationHandler.Handle(new DomainNotification(command.GetType().ToString(), error.ErrorMessage)));
                 return Unit.Task;
             }
             Estado Estado = new Estado(command.Estado.Sigla,

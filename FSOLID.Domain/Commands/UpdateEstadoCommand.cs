@@ -1,4 +1,5 @@
-﻿using FSOLID.Commom.Publisher;
+﻿using FluentValidation.Results;
+using FSOLID.Commom.Publisher;
 using FSOLID.Domain.DTO;
 using FSOLID.Domain.Validations;
 using System;
@@ -19,6 +20,11 @@ namespace FSOLID.Domain.Commands
         public override bool IsValid()
         {
             return new UpdateEstadoCommandValidation().Validate(this).IsValid;
+        }
+
+        public new ValidationResult ValidationResult()
+        {
+            return new UpdateEstadoCommandValidation().Validate(this);
         }
     }
 }
